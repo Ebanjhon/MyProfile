@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            font-family: monospace;
+            color: #000000;
+            font-size: 32px;
+        }
+
+        .typing {
+            border-right: 2px solid #00ffc8;
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% { border-color: transparent; }
+            50% { border-color: #2b0707; }
+            100% { border-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="typing" id="text"></div>
+
+    <script>
+        const text = "Hello friend, my name is Jhon Eban";
+        const speed = 80;   // tốc độ gõ chữ
+        const pause = 2000; // thời gian dừng sau khi gõ xong
+        let i = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const element = document.getElementById("text");
+
+            if (!isDeleting) {
+                element.textContent = text.substring(0, i + 1);
+                i++;
+                if (i === text.length) {
+                    setTimeout(() => {
+                        isDeleting = true;
+                    }, pause);
+                }
+            } else {
+                element.textContent = text.substring(0, i - 1);
+                i--;
+                if (i === 0) {
+                    isDeleting = false;
+                }
+            }
+
+            setTimeout(typeEffect, isDeleting ? 50 : speed);
+        }
+
+        typeEffect();
+    </script>
+
+</body>
+</html>
