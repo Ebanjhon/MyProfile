@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile</title>
 
     <style>
+        /* Background gradient */
         body {
             margin: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #ffffff;
-            font-family: monospace;
-            color: #000000;
-            font-size: 32px;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            font-family: "Fira Code", monospace;
+            color: #00ffc8;
+        }
+
+        /* Container with glow */
+        .typing-box {
+            padding: 20px 40px;
+            font-size: 36px;
+            color: #eafffa;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 25px rgba(0, 255, 200, 0.4);
+            backdrop-filter: blur(10px);
         }
 
         .typing {
-            border-right: 2px solid #00ffc8;
-            padding-right: 5px;
+            border-right: 3px solid #00ffc8;
+            padding-right: 8px;
             animation: blink 0.7s infinite;
+            white-space: nowrap;
         }
 
         @keyframes blink {
             0% { border-color: transparent; }
-            50% { border-color: #2b0707; }
+            50% { border-color: #00ffc8; }
             100% { border-color: transparent; }
         }
     </style>
 </head>
 <body>
 
-    <div class="typing" id="text"></div>
+    <div class="typing-box">
+        <span class="typing" id="text"></span>
+    </div>
 
     <script>
         const text = "Hello friend, my name is Jhon Eban";
-        const speed = 80;   // tốc độ gõ chữ
-        const pause = 2000; // thời gian dừng sau khi gõ xong
+        const speed = 80;
+        const pause = 2000;
         let i = 0;
         let isDeleting = false;
 
@@ -66,6 +80,5 @@
 
         typeEffect();
     </script>
-
 </body>
 </html>
